@@ -109,4 +109,4 @@ If you enjoyed the game, consider buying me a coffee!
 
 [![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&logo=paypal)](https://paypal.me/labsluth/1.9USD)
 
-**››› [paypal.me/labsluth](https://paypal.me/labsluth/1.9USD) ‹‹‹** — suggested tip: **$1.9 USD**
+**››› [paypal.me/labsluth](https://paypal.me/labsluth/1.9USD) ‹‹‹**
