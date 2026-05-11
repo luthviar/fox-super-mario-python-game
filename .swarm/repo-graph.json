@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0.0",
+  "workspaceRoot": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom",
+  "nodes": {
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/build_levels.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/build_levels.py",
+      "moduleName": "build_levels.py",
+      "exports": [
+        "FLOOR_ROW",
+        "SUBFLOOR_ROW",
+        "STAND_ROW",
+        "LevelSpec",
+        "build",
+        "is_solid",
+        "can_stand",
+        "JUMP_REACH",
+        "DROP_HORIZ",
+        "reach_set",
+        "coin_reachable",
+        "validate",
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5",
+        "L6",
+        "L7",
+        "L8",
+        "L9",
+        "L10",
+        "LEVELS",
+        "emit"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T09:58:46.026Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/__init__.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/__init__.py",
+      "moduleName": "foxgame/__init__.py",
+      "exports": [],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T06:03:55.972Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/assets.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/assets.py",
+      "moduleName": "foxgame/assets.py",
+      "exports": [
+        "SPRITE_NAMES",
+        "Sprites",
+        "load_sprites",
+        "scale_to_height",
+        "scale_to_size"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T06:10:04.381Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/background.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/background.py",
+      "moduleName": "foxgame/background.py",
+      "exports": [
+        "Background"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T06:07:03.651Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/camera.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/camera.py",
+      "moduleName": "foxgame/camera.py",
+      "exports": [
+        "Camera"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T06:06:38.008Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/entities.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/entities.py",
+      "moduleName": "foxgame/entities.py",
+      "exports": [
+        "GRAVITY",
+        "MAX_FALL",
+        "WALK_SPEED",
+        "RUN_SPEED",
+        "JUMP_VY",
+        "JUMP_CUT_VY",
+        "STOMP_BOUNCE_VY",
+        "COYOTE_TIME",
+        "JUMP_BUFFER",
+        "SLIME_SPEED",
+        "PLAYER_HEIGHT",
+        "SLIME_HEIGHT",
+        "COIN_HEIGHT",
+        "FLAG_HEIGHT",
+        "PLAYER_BOX_W",
+        "PLAYER_BOX_H",
+        "Player",
+        "Slime",
+        "Coin",
+        "Flag",
+        "Renderer"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T06:30:01.910Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/hud.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/hud.py",
+      "moduleName": "foxgame/hud.py",
+      "exports": [
+        "HUD"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T09:44:24.124Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/level.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/level.py",
+      "moduleName": "foxgame/level.py",
+      "exports": [
+        "TILE",
+        "LEVELS",
+        "LevelData",
+        "parse",
+        "level_count"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T09:43:58.118Z"
+    },
+    "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/main.py": {
+      "filePath": "/Volumes/ssd1tblq/Luthfi/projects/self/supermario-custom/foxgame/main.py",
+      "moduleName": "foxgame/main.py",
+      "exports": [
+        "VIEW_W",
+        "VIEW_H",
+        "FPS",
+        "ASSETS_DIR",
+        "TITLE",
+        "PLAY",
+        "WIN",
+        "COMPLETE",
+        "GAMEOVER",
+        "World",
+        "draw_world",
+        "run",
+        "main"
+      ],
+      "imports": [],
+      "language": "python",
+      "mtime": "2026-05-11T09:44:58.923Z"
+    }
+  },
+  "edges": [],
+  "metadata": {
+    "generatedAt": "2026-05-11T09:59:02.489Z",
+    "generator": "repo-graph",
+    "nodeCount": 9,
+    "edgeCount": 0
+  }
+}

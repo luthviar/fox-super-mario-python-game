@@ -1,0 +1,202 @@
+"""ASCII-defined levels for the fox platformer.
+
+Legend
+------
+.  empty
+G  grass-topped dirt block (solid)
+S  stone block (solid)
+C  coin
+E  slime spawn
+F  flag (goal)
+P  player spawn
+
+Each level is a list of strings, top-to-bottom. Levels are stored in LEVELS
+and selected by index via parse(level_index).
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import List, Tuple
+
+TILE = 48
+
+
+LEVELS: List[List[str]] = [
+    # ---------------- Level 1 — gentle intro (with 1 platform slime) ----------------
+    [
+        "................................................................................",
+        "................................................................................",
+        "................................................................................",
+        "................................................................................",
+        "................................................................................",
+        "..................................CECC........CCCC.......................CCC....",
+        "..........CCCC.............CCCC...SSSS...CCC..SSSS...CCCC..........CCCC..SSS....",
+        "..........SSSS.....CCC.....SSSS..........SSS.........SSSS....CCCC..SSSS.........",
+        "...................SSS.......................................SSSS...............",
+        "P...E........E........E.........E...........E...........E....................F..",
+        "GGGGGGGG.GGGGGGG..GGGGGGG.GGGGGGGGGG..GGGGGGGGGG.GGGGGGGGGGG..GGGGGGGGGGGGGGGGGG",
+        "SSSSSSSS.SSSSSSS..SSSSSSS.SSSSSSSSSS..SSSSSSSSSS.SSSSSSSSSSS..SSSSSSSSSSSSSSSSSS",
+    ],
+    # ---------------- Level 2 — medium with 2 platform slimes ----------------
+    [
+        "................................................................................",
+        "................................................................................",
+        "................................................................................",
+        "................................................................................",
+        "..............................CC...............CC.....................CC........",
+        "...................CC.......CCSS............CECSS.................CCC.SS........",
+        ".........CEC.......SS.......SSS...CCC.......SSS..........CCC......SSS....CCC....",
+        ".........SSS...CCC.....CCCC.......SSS...CCC.........CCCC.SSS..CC.........SSS....",
+        "...............SSS.....SSSS.............SSS.........SSSS......SS................",
+        "P...E......E.......E.......E........E........E..........E.......E.............F.",
+        "GGGGGGG.GGGGGG..GGGGGG...GGGGGGG.GGGGGGG..GGGGGGGG...GGGGGGGGG.GGGGGGGGGGGGGGGGG",
+        "SSSSSSS.SSSSSS..SSSSSS...SSSSSSS.SSSSSSS..SSSSSSSS...SSSSSSSSS.SSSSSSSSSSSSSSSSS",
+    ],
+    # ---------------- Level 3 — multi-tier with 3 platform slimes ----------------
+    [
+        "..........................................................................................",
+        "..........................................................................................",
+        "..........................................................................................",
+        ".........................................CCC..........................CCC.................",
+        "..........................CCC............SSS..............CCC.........SSS.................",
+        "..........................SSS.........CC..............CEC.SSS......CC................CC...",
+        ".............CC.......CEC.........CCC.SS..........CC..SSS.....CCC..SS...........CCC..SS...",
+        "..........CC.SS..CCC..SSS.....CC..SSS........CCC..SS..........SSS..........CEC..SSS.......",
+        "..........SS.....SSS..........SS.............SSS...........................SSS............",
+        "P...E.......E......E........E.......E.........E.......E..........E..........E...........F.",
+        "GGGGGGGG..GGGGGG.GGGGG...GGGGGGG..GGGGGG...GGGGGGG..GGGGGGGG...GGGGGGGGG..GGGGGGGGGGGGGGGG",
+        "SSSSSSSS..SSSSSS.SSSSS...SSSSSSS..SSSSSS...SSSSSSS..SSSSSSSS...SSSSSSSSS..SSSSSSSSSSSSSSSS",
+    ],
+    # ---------------- Level 4 — Bandit's Pass, 4 platform slimes ----------------
+    [
+        "..........................................................................................",
+        "..........................................................................................",
+        "..........................................................................................",
+        "......................................CCC...............................CCC...............",
+        "..........................CC..........SSS..................CC...........SSS...............",
+        "...................CC.....SS......CEC..............CEC.....SS.......CCC..............CCC..",
+        ".........CC........SS.CCC.........SSS......CC......SSS.CCC..........SSS.....CEC......SS...",
+        ".........SS...CEC.....SSS.....CC...........SS.CCC......SSS......CCC.........SSS..CC.......",
+        "..............SSS.............SS..............SSS...............SSS..............SS.......",
+        "P...E......E.......E........E......E.......E........E........E........E.......E.........F.",
+        "GGGGGG..GGGGG...GGGGGG...GGGGG..GGGGG...GGGGG...GGGGGG...GGGGGG...GGGGGGG..GGGGG..GGGGGGGG",
+        "SSSSSS..SSSSS...SSSSSS...SSSSS..SSSSS...SSSSS...SSSSSS...SSSSSS...SSSSSSS..SSSSS..SSSSSSSS",
+    ],
+    # ---------------- Level 5 — Cliffhanger sky-island chasm, 4 platform slimes ----------------
+    [
+        "....................................................................................................",
+        "....................................................................................................",
+        "....................................................................................................",
+        "..................................................................CCC...............................",
+        "...........................CC.....................................SSS...............................",
+        "...................CC......SS......ECC.............CC.........ECC.............ECC..............CCC..",
+        ".........CC........SS..CCC.........SSS.CC......CC..SS..CC.....SSS......CCC....SSS.....CCC......SS...",
+        ".........SS....CEC.....SSS.....CCC.....SS..CC..SS......SS..CC..........SSS.CC......CC.SSS..CC.......",
+        "...............SSS.............SSS.........SS..............SS..............SS......SS......SS.......",
+        "P...E......E.......E........E.......E...........................E.....E.......E........E......E.E.F.",
+        "GGGGGG..GGGGG...GGGGGG...GGGGG...GGGGGGG.....................GGGGG...GGGGG...GGGGG...GGGGG..GGGGGGGG",
+        "SSSSSS..SSSSS...SSSSSS...SSSSS...SSSSSSS.....................SSSSS...SSSSS...SSSSS...SSSSS..SSSSSSSS",
+    ],
+    # ---------------- Level 6 — Final Onslaught: brutal, 8 platform slimes ----------------
+    [
+        "..............................................................................................................",
+        "..............................................................................................................",
+        "..............................................................................................................",
+        "............................................CCC...............................CCC.............................",
+        "...........................CC...............SSS.....CC........................SSS......CC.....................",
+        "...................CC......SS...........CEC.........SS......CEC...........CCC..........SS......CEC............",
+        ".........CC........SS..CEC...CC......CC.SSS.....CEC.........SSSCC......CC.SSS......CEC.........SSS.....CEC....",
+        ".........SS....CEC.....SSS...SS..CC..SS.........SSS.....CCC....SS..CC..SS..........SSS.....CCC.....CC..SSS....",
+        "...............SSS...............SS.....................SSS........SS......................SSS.....SS.........",
+        "P...E......E.......E.....................E...E.....E........E.............E....E...............E......E....EF.",
+        "GGGGGG...GGGG...GGGGGG...GGGGG.........GGGGGGGG...GGGGG...GGGGGG.........GGGGGGGGG...GGGGG...GGGGG...GGGGGGGGG",
+        "SSSSSS...SSSS...SSSSSS...SSSSS.........SSSSSSSS...SSSSS...SSSSSS.........SSSSSSSSS...SSSSS...SSSSS...SSSSSSSSS",
+    ],
+]
+
+
+@dataclass(frozen=True)
+class LevelData:
+    index: int                 # 0-based index into LEVELS
+    width_tiles: int
+    height_tiles: int
+    tiles: List[List[str]]     # only solid tiles: 'G' or 'S' or '.'
+    coins: List[Tuple[int, int]]
+    slimes: List[Tuple[int, int]]
+    flag: Tuple[int, int]
+    player_spawn: Tuple[int, int]
+
+    @property
+    def width_px(self) -> int:
+        return self.width_tiles * TILE
+
+    @property
+    def height_px(self) -> int:
+        return self.height_tiles * TILE
+
+    @property
+    def number(self) -> int:
+        return self.index + 1  # 1-based for UI
+
+    @property
+    def is_last(self) -> bool:
+        return self.index >= len(LEVELS) - 1
+
+    def is_solid(self, tx: int, ty: int) -> bool:
+        if tx < 0 or ty < 0 or tx >= self.width_tiles or ty >= self.height_tiles:
+            return tx < 0 or tx >= self.width_tiles
+        return self.tiles[ty][tx] in ("G", "S")
+
+    def tile_at(self, tx: int, ty: int) -> str:
+        if 0 <= tx < self.width_tiles and 0 <= ty < self.height_tiles:
+            return self.tiles[ty][tx]
+        return "."
+
+
+def parse(level_index: int = 0) -> LevelData:
+    if level_index < 0 or level_index >= len(LEVELS):
+        raise ValueError(f"level_index {level_index} out of range (have {len(LEVELS)} levels)")
+    raw = LEVELS[level_index]
+    height = len(raw)
+    width = max(len(r) for r in raw)
+    raw = [r.ljust(width, ".") for r in raw]
+
+    tiles: List[List[str]] = [["." for _ in range(width)] for _ in range(height)]
+    coins: List[Tuple[int, int]] = []
+    slimes: List[Tuple[int, int]] = []
+    flag: Tuple[int, int] | None = None
+    spawn: Tuple[int, int] | None = None
+
+    for y, row in enumerate(raw):
+        for x, ch in enumerate(row):
+            if ch in ("G", "S"):
+                tiles[y][x] = ch
+            elif ch == "C":
+                coins.append((x, y))
+            elif ch == "E":
+                slimes.append((x, y))
+            elif ch == "F":
+                flag = (x, y)
+            elif ch == "P":
+                spawn = (x, y)
+
+    if spawn is None:
+        raise ValueError(f"Level {level_index} has no player spawn 'P'")
+    if flag is None:
+        raise ValueError(f"Level {level_index} has no flag 'F'")
+
+    return LevelData(
+        index=level_index,
+        width_tiles=width,
+        height_tiles=height,
+        tiles=tiles,
+        coins=coins,
+        slimes=slimes,
+        flag=flag,
+        player_spawn=spawn,
+    )
+
+
+def level_count() -> int:
+    return len(LEVELS)

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "scanned_at": "2026-05-11T09:59:18.894Z",
+  "files": [
+    {
+      "path": "README.md",
+      "title": "Fox Platformer",
+      "summary": "A small Super-Mario-style 2D platformer built with Python + `pygame-ce`. The fox runs, jumps, stomps slimes, collects coins, and races for the flag. ```sh pip install -r requirements.txt ``` > The ...",
+      "lines": 90,
+      "mtime": 1778492811396.688
+    }
+  ]
+}
